@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonKit", "JsonKit\JsonKit.csproj", "{AD1ACE8E-84F7-4C9E-9B32-0B9AEB396ACC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		DebugNET40|Any CPU = DebugNET40|Any CPU
+		Release|Any CPU = Release|Any CPU
+		ReleaseNET40|Any CPU = ReleaseNET40|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD1ACE8E-84F7-4C9E-9B32-0B9AEB396ACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD1ACE8E-84F7-4C9E-9B32-0B9AEB396ACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD1ACE8E-84F7-4C9E-9B32-0B9AEB396ACC}.DebugNET40|Any CPU.ActiveCfg = DebugNET40|Any CPU
+		{AD1ACE8E-84F7-4C9E-9B32-0B9AEB396ACC}.DebugNET40|Any CPU.Build.0 = DebugNET40|Any CPU
+		{AD1ACE8E-84F7-4C9E-9B32-0B9AEB396ACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD1ACE8E-84F7-4C9E-9B32-0B9AEB396ACC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD1ACE8E-84F7-4C9E-9B32-0B9AEB396ACC}.ReleaseNET40|Any CPU.ActiveCfg = ReleaseNET40|Any CPU
+		{AD1ACE8E-84F7-4C9E-9B32-0B9AEB396ACC}.ReleaseNET40|Any CPU.Build.0 = ReleaseNET40|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
