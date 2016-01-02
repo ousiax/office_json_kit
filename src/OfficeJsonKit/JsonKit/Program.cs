@@ -3,8 +3,9 @@
  *
  * Copyright (c) 2015 Roy Xu
  *
- * @since 12/31/2015 18:53:05 
- * @author qqbuby
+ * @since 12/31/2015 18:53:05
+ *
+ * @author Roy Xu
  *
 */
 
@@ -82,18 +83,16 @@ namespace JsonKit {
         }
 
         private static string GetExportTypeFromCommandLineArgs(string[] commandLineArgs) {
-            String outputPath = null;
+            String exportType = null;
             foreach (var arg in commandLineArgs) {
-                if ("--xlsx".Equals(arg)) {
-                    outputPath = arg.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault();
-                    break;
-                }
-                if ("--docx".Equals(arg)) {
-                    outputPath = arg.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault();
+                switch(arg) {
+                    case "--xlsx":
+                    case "--docx":
+                         exportType = arg;
                     break;
                 }
             }
-            return outputPath;
+            return exportType;
         }
 
         private static string GetOutputPathFromCommandLineArgs(String[] commandLineArgs) {

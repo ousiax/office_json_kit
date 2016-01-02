@@ -1,6 +1,11 @@
 ﻿/*
- *   @create 2015-12-24
- *   @author qqbuby
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2015 Roy Xu
+ *
+ * @since 12/31/2015 18:53:05
+ *
+ * @author Roy Xu
 */
 
 using System;

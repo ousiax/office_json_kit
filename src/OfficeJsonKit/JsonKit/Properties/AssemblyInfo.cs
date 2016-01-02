@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("JsonKit")]
-[assembly: AssemblyDescription("A simple util used to convert json text to office file (*.xlsx, *.docx).")]
+[assembly: AssemblyDescription("A simple utility used to export json text to office file (*.xlsx, *.docx).")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("qqbuby@gmail.com")]
 [assembly: AssemblyProduct("JsonKit")]
@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.9.16")]
-[assembly: AssemblyFileVersion("1.0.9.16")]
+[assembly: AssemblyVersion("1.0.9.18")]
+[assembly: AssemblyFileVersion("1.0.9.18")]
 [assembly: NeutralResourcesLanguage("")]
 
