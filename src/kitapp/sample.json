@@ -1,0 +1,58 @@
+﻿{
+    "data": [
+        {
+            "symbol": "601288",
+            "full_symbol": "sh601288",
+            "name": "农业银行",
+            "value": "13.05"
+        },
+        {
+            "symbol": "600291",
+            "full_symbol": "sh600291",
+            "name": "西水股份",
+            "value": "12.69"
+        },
+        {
+            "symbol": "600015",
+            "full_symbol": "sh600015",
+            "name": "华夏银行",
+            "value": "12.40"
+        },
+        {
+            "symbol": "600000",
+            "full_symbol": "sh600000",
+            "name": "浦发银行",
+            "value": "12.37"
+        },
+        {
+            "symbol": "600030",
+            "full_symbol": "sh600030",
+            "name": "中信证券",
+            "value": "11.97"
+        },
+        {
+            "symbol": "601601",
+            "full_symbol": "sh601601",
+            "name": "中国太保",
+            "value": "11.83"
+        },
+        {
+            "symbol": "600705",
+            "full_symbol": "sh600705",
+            "name": "中航资本",
+            "value": "11.73"
+        },
+        {
+            "symbol": "601009",
+            "full_symbol": "sh601009",
+            "name": "南京银行",
+            "value": "11.69"
+        },
+        {
+            "symbol": "000728",
+            "full_symbol": "sz000728",
+            "name": "国元证券",
+            "value": "11.67"
+        }
+    ]
+}

@@ -7,7 +7,7 @@ A simple utility used to export json text to office file (*.xlsx, *.docx).
 **Usage**
 
     Usage:
-    JsonKit.exe [--help] [--version] [--file=<file>] [--json=<a character sequence>] [-out=<file>] [--xlsx] [--docx] [<a character sequence>]
+    kitapp [--help] [--version] [--file=<file>] [--json=<a character sequence>] [-out=<file>] [--xlsx] [--docx] [<a character sequence>]
     Options:
     --help              display this help text and exit.
     --version           display version information and exit.
@@ -19,18 +19,18 @@ A simple utility used to export json text to office file (*.xlsx, *.docx).
     <a character sequence>
                         select a character sequence that represents a json object, only if one positional parameter (not start with '--') provided, Jsonkit will use it as json text and export a *.xlsx.
     Examples:
-       JsonKit.exe --file=sample.json --xlsx --out=out.xlsx
-       JsonKit.exe --file=sample.json --xlsx
-       JsonKit.exe --file=sample.json
-       JsonKit.exe --json={"data":[{"symbol":"601288","name":"农业银行","value":"13.05"},{"symbol":"600291","name":"西水股份","value":"12.69"}]} --xlsx --out=out.xlsx
-       JsonKit.exe --json={"data":[{"symbol":"601288","name":"农业银行","value":"13.05"},{"symbol":"600291","name":"西水股份","value":"12.69"}]} --xlsx
-       JsonKit.exe --json={"data":[{"symbol":"601288","name":"农业银行","value":"13.05"},{"symbol":"600291","name":"西水股份","value":"12.69"}]}
-       JsonKit.exe {"data":[{"symbol":"601288","name":"农业银行","value":"13.05"},{"symbol":"600291","name":"西水股份","value":"12.69"}]}
+       kitapp --file=sample.json --xlsx --out=out.xlsx
+       kitapp --file=sample.json --xlsx
+       kitapp --file=sample.json
+       kitapp --json={"data":[{"symbol":"601288","name":"农业银行","value":"13.05"},{"symbol":"600291","name":"西水股份","value":"12.69"}]} --xlsx --out=out.xlsx
+       kitapp --json={"data":[{"symbol":"601288","name":"农业银行","value":"13.05"},{"symbol":"600291","name":"西水股份","value":"12.69"}]} --xlsx
+       kitapp --json={"data":[{"symbol":"601288","name":"农业银行","value":"13.05"},{"symbol":"600291","name":"西水股份","value":"12.69"}]}
+       kitapp {"data":[{"symbol":"601288","name":"农业银行","value":"13.05"},{"symbol":"600291","name":"西水股份","value":"12.69"}]}
 
 **Using the Windows command interpreter**
 
-    > JsonKit.exe "{^"data^":[{^"symbol^":^"601288^",^"value^":^"13.05^"},{^"symbol^":^"600291^",^"value^":^"12.69^"}]}"
-    > JsonKit.exe --json="{^"data^":[{^"symbol^":^"601288^",^"value^":^"13.05^"},{^"symbol^":^"600291^",^"value^":^"12.69^"}]}" --docx
+    > kitapp "{^"data^":[{^"symbol^":^"601288^",^"value^":^"13.05^"},{^"symbol^":^"600291^",^"value^":^"12.69^"}]}"
+    > kitapp --json="{^"data^":[{^"symbol^":^"601288^",^"value^":^"13.05^"},{^"symbol^":^"600291^",^"value^":^"12.69^"}]}" --docx
 
 **Quoting and escaping**
 
