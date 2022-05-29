@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Copyright>Copyright (c) 2021 ROY</Copyright>
+    <Copyright>Copyright (c) 2022 ROY</Copyright>
     <AssemblyTitle>kitapp</AssemblyTitle>
     <AssemblyName>kitapp</AssemblyName>
     <ApplicationIcon>app.ico</ApplicationIcon>
     <Authors>ROY</Authors>
-    <VersionPrefix>1.0.10</VersionPrefix>
+    <VersionPrefix>1.0.20</VersionPrefix>
     <Description>A simple utility used to export json text to office file (*.xlsx, *.docx).</Description>
 
     <OutputType>Exe</OutputType>
