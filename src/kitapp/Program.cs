@@ -10,6 +10,7 @@
 */
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -67,15 +68,15 @@ namespace kitapp
         /// <exception cref="System.IO.FileNotFoundException">Invalid option: the file specified in option '--file=&lt;file&gt;' was not found.</exception>
         private static void ExportToOffice(String[] commandLineArgs)
         {
-            String command = Path.GetFileName(commandLineArgs[0]);
-            String json = GetJsonTextFromCommandLineArgs(commandLineArgs);
+            var command = Path.GetFileName(commandLineArgs[0]);
+            var json = GetJsonTextFromCommandLineArgs(commandLineArgs);
             if (String.IsNullOrEmpty(json))
             {
                 DisplayHelpText(command);
                 return;
             }
-            String outputPath = GetOutputPathFromCommandLineArgs(commandLineArgs) ?? DEFAULT_OUTPUT_PATH;
-            String exportType = GetExportTypeFromCommandLineArgs(commandLineArgs) ?? DEFAULT_EXPORT_TYPE;
+            var outputPath = GetOutputPathFromCommandLineArgs(commandLineArgs) ?? DEFAULT_OUTPUT_PATH;
+            var exportType = GetExportTypeFromCommandLineArgs(commandLineArgs) ?? DEFAULT_EXPORT_TYPE;
 
             switch (exportType)
             {
@@ -91,9 +92,9 @@ namespace kitapp
             }
         }
 
-        private static string GetExportTypeFromCommandLineArgs(string[] commandLineArgs)
+        private static string? GetExportTypeFromCommandLineArgs(string[] commandLineArgs)
         {
-            String exportType = null;
+            string? exportType = null;
             foreach (var arg in commandLineArgs)
             {
                 switch (arg)
@@ -107,9 +108,9 @@ namespace kitapp
             return exportType;
         }
 
-        private static string GetOutputPathFromCommandLineArgs(String[] commandLineArgs)
+        private static string? GetOutputPathFromCommandLineArgs(String[] commandLineArgs)
         {
-            String outputPath = null;
+            string? outputPath = null;
             foreach (var arg in commandLineArgs)
             {
                 if (arg.StartsWith("--out"))
@@ -121,9 +122,9 @@ namespace kitapp
             return outputPath;
         }
 
-        private static string GetJsonTextFromCommandLineArgs(String[] commandLineArgs)
+        private static string? GetJsonTextFromCommandLineArgs(String[] commandLineArgs)
         {
-            String json = null;
+            string? json = null;
             if (commandLineArgs.Length == 2 && !commandLineArgs[1].StartsWith("--"))
             { // the first command argument as json text if only one argument provided.
                 json = commandLineArgs[1];
@@ -139,7 +140,7 @@ namespace kitapp
                     }
                     if (arg.StartsWith("--file"))
                     {
-                        String path = arg.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault();
+                        var path = arg.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault();
                         if (File.Exists(path))
                         {
                             json = File.ReadAllText(path);
@@ -155,7 +156,7 @@ namespace kitapp
             return json;
         }
 
-        private static void ExportToXlsx(String json, String outputPath)
+        private static void ExportToXlsx(String json, [DisallowNull] String outputPath)
         {
             outputPath = AmendOutputPath(outputPath, ".xlsx");
             using var o = JsonDocument.Parse(json);
@@ -177,24 +178,24 @@ namespace kitapp
             }
         }
 
-        private static void ExportToDocx(string json, string outputPath)
+        private static void ExportToDocx(string json, [DisallowNull] string outputPath)
         {
             outputPath = AmendOutputPath(outputPath, ".docx");
             using var jobject = JsonDocument.Parse(json);
             var data = jobject.RootElement.GetProperty("data");
-            int rows = data.EnumerateArray().Count();
-            int cols = 0;
+            var rows = data.EnumerateArray().Count();
+            var cols = 0;
             if (rows > 0)
             {
                 cols = data.EnumerateArray().First().EnumerateObject().Count();
             }
-            XWPFDocument document = new XWPFDocument();
-            XWPFTable table = document.CreateTable(rows, cols);
+            var document = new XWPFDocument();
+            var table = document.CreateTable(rows, cols);
             //for (int col = 0; col < cols; col++) { // not work
             //    table.SetColumnWidth(col, 100);
             //}
 
-            int row = 0;
+            var row = 0;
             foreach (var token in data.EnumerateArray())
             {
                 int pos = 0;
@@ -204,7 +205,7 @@ namespace kitapp
                 }
                 row++;
             }
-            using (FileStream fs = File.Create(outputPath))
+            using (var fs = File.Create(outputPath))
             {
                 document.Write(fs);
             }
@@ -212,12 +213,12 @@ namespace kitapp
 
         private static string AmendOutputPath(string outputPath, string extension)
         {
-            String location = Path.GetDirectoryName(Path.GetFullPath(outputPath));
+            var location = Path.GetDirectoryName(Path.GetFullPath(outputPath));
             if (!Directory.Exists(location))
             {
-                Directory.CreateDirectory(location);
+                Directory.CreateDirectory(location!);
             }
-            outputPath = Path.Combine(location, Path.GetFileNameWithoutExtension(outputPath) + extension);
+            outputPath = Path.Combine(location!, Path.GetFileNameWithoutExtension(outputPath) + extension);
             return outputPath;
         }
 

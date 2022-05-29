@@ -10,13 +10,12 @@
 
 using System;
 using System.Reflection;
-using System.Runtime.Versioning;
 
 namespace kitapp
 {
     internal class __Version
     {
-        private static String _version;
+        private static String? _version;
 
         public static String Version
         {
@@ -26,9 +25,9 @@ namespace kitapp
         private static String GetVersion()
         {
             var executingAssembly = Assembly.GetExecutingAssembly();
-            var title = executingAssembly.GetCustomAttribute<AssemblyTitleAttribute>().Title;
-            var copyright = executingAssembly.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
-            var version = executingAssembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
+            var title = executingAssembly.GetCustomAttribute<AssemblyTitleAttribute>()!.Title;
+            var copyright = executingAssembly.GetCustomAttribute<AssemblyCopyrightAttribute>()!.Copyright;
+            var version = executingAssembly.GetCustomAttribute<AssemblyFileVersionAttribute>()!.Version;
 
             return _version = $"{title} v{version} {copyright}";
         }
