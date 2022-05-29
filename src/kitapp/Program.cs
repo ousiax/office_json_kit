@@ -13,8 +13,7 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using Newtonsoft.Json.Linq;
-using NPOI.SS.UserModel;
+using System.Text.Json;
 using NPOI.XSSF.UserModel;
 using NPOI.XWPF.UserModel;
 
@@ -159,20 +158,20 @@ namespace kitapp
         private static void ExportToXlsx(String json, String outputPath)
         {
             outputPath = AmendOutputPath(outputPath, ".xlsx");
-            JObject o = JObject.Parse(json);
-            XSSFWorkbook workbook = new XSSFWorkbook();
-            ISheet sheet = workbook.CreateSheet("sheet1");
+            using var o = JsonDocument.Parse(json);
+            var workbook = new XSSFWorkbook();
+            var sheet = workbook.CreateSheet("sheet1");
             int rownum = 0;
-            foreach (JToken token in o["data"])
+            foreach (var token in o.RootElement.GetProperty("data").EnumerateArray())
             {
-                IRow row = sheet.CreateRow(rownum++);
-                int column = 0;
-                foreach (JToken text in token.Values())
+                var row = sheet.CreateRow(rownum++);
+                var column = 0;
+                foreach (var text in token.EnumerateObject())
                 {
-                    row.CreateCell(column++).SetCellValue(text.ToString());
+                    row.CreateCell(column++).SetCellValue(text.Value.GetString());
                 }
             }
-            using (FileStream fs = File.Create(outputPath))
+            using (var fs = File.Create(outputPath))
             {
                 workbook.Write(fs);
             }
@@ -181,13 +180,13 @@ namespace kitapp
         private static void ExportToDocx(string json, string outputPath)
         {
             outputPath = AmendOutputPath(outputPath, ".docx");
-            JObject jobject = JObject.Parse(json);
-            JToken data = jobject["data"];
-            int rows = data.Count();
+            using var jobject = JsonDocument.Parse(json);
+            var data = jobject.RootElement.GetProperty("data");
+            int rows = data.EnumerateArray().Count();
             int cols = 0;
             if (rows > 0)
             {
-                cols = data.First().Values().Count();
+                cols = data.EnumerateArray().First().EnumerateObject().Count();
             }
             XWPFDocument document = new XWPFDocument();
             XWPFTable table = document.CreateTable(rows, cols);
@@ -196,12 +195,12 @@ namespace kitapp
             //}
 
             int row = 0;
-            foreach (JToken token in data)
+            foreach (var token in data.EnumerateArray())
             {
                 int pos = 0;
-                foreach (JToken text in token.Values())
+                foreach (var text in token.EnumerateObject())
                 {
-                    table.GetRow(row).GetCell(pos++).SetText(text.ToString());
+                    table.GetRow(row).GetCell(pos++).SetText(text.Value.GetString());
                 }
                 row++;
             }
