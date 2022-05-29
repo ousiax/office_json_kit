@@ -10,13 +10,7 @@
     <Description>A simple utility used to export json text to office file (*.xlsx, *.docx).</Description>
 
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
-    <SelfContained>true</SelfContained>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    <!-- <PublishSingleFile>true</PublishSingleFile>
-    <PublishTrimmed>true</PublishTrimmed>
-    <PublishReadyToRun>true</PublishReadyToRun>
-    <PublishReadyToRunShowWarnings>true</PublishReadyToRunShowWarnings> -->
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
